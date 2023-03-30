@@ -1,0 +1,37 @@
+{
+  "name": "react-recaptcha-component",
+  "version": "1.0.0",
+  "description": "React component for implementing Google reCAPTCHA v2 and v3",
+  "main": "dist/index.ts",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "repository": "https://github.com/DrwshSA/react-recaptcha-component.git",
+  "author": "Saja Darwish",
+  "license": "none",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server --mode development --open",
+    "test": "react-scripts test --watchAll=false"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "^8.37.0",
+    "react": "18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.0",
+    "@types/react": "^18.0.31",
+    "jest": "^29.5.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.2",
+    "webpack": "^5.77.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.1"
+  }
+}
