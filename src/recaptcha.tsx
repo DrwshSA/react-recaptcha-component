@@ -78,6 +78,7 @@ const Recaptcha = ({
   React.useEffect(() => {
     if (window.grecaptcha === undefined) {
       const script = document.createElement('script');
+      script.id= 'recaptcha-script';
       script.src = getRecaptchaApiUrl(version, sitekey, theme);
       script.async = true;
       script.defer = true;
@@ -97,7 +98,7 @@ const Recaptcha = ({
       };
   }, [widgetId]);
 
-  return (<div id="recaptcha"></div>);
+  return (<div id="recaptcha" data-testid="recaptcha-container"></div>);
 };
 
 export default Recaptcha;
