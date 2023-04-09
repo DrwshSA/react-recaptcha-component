@@ -1,5 +1,1 @@
-
-import ReCAPTCHA from "./recaptcha";
-
-
-export { ReCAPTCHA };
+export { default as Recaptcha } from './recaptcha';
