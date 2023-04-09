@@ -1,9 +1,10 @@
 {
   "name": "react-recaptcha-component",
-  "version": "0.1.6-beta.1",
+  "version": "0.1.7-beta.1",
   "description": "React component for implementing Google reCAPTCHA v2 and v3",
-  "main": "src/index.ts",
-  "typings": "src/index.d.ts",
+  "main": "src/index.js",
+  "module": "src/index.ts",
+  "typings": "types/index.d.ts",
   "repository": "https://github.com/DrwshSA/react-recaptcha-component.git",
   "author": "Saja Darwish",
   "license": "none",
