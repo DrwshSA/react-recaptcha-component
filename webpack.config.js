@@ -22,6 +22,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
+    alias: {
+      'react-recaptcha-component': path.resolve(__dirname, 'src')
+    }
   },
   module: {
     rules: [
