@@ -1,6 +1,6 @@
 {
   "name": "react-recaptcha-component",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.1-beta.1",
   "description": "React component for implementing Google reCAPTCHA v2 and v3",
   "main": "index.ts",
   "module": "index.js",
