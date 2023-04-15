@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import Recaptcha from './recaptcha';
+import Recaptcha from '../src/recaptcha';
+import { createRoot } from 'react-dom/client';
+
 
 const ExampleRecaptcha = () => {
   const [token, setToken] = useState<string | null>(null);
@@ -37,4 +39,20 @@ const ExampleRecaptcha = () => {
   );
 };
 
-export default ExampleRecaptcha;
+
+
+
+function renderApp() {
+  const container = document.getElementById('root');
+  console.log('container type', container)
+    if (container && container.nodeType === Node.ELEMENT_NODE) {
+      const root = createRoot(container!);
+      root.render(<ExampleRecaptcha />);
+    } else {
+      console.error("Target container is not a valid DOM element.");
+    }
+}
+window.onload = function () {
+  renderApp();
+};
+

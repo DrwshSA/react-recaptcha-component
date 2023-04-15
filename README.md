@@ -48,3 +48,8 @@ Example of use as a sub library in React project
 
         export default YourComponent;
     ```
+
+- To run this library's example.tsx you can run:
+    ```
+        yarn start-example
+    ```

@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -15,7 +15,7 @@ module.exports = {
     port: '8080',
     allowedHosts: 'all',
     hot: true,
-    open: true,
+    open: true
 },
   externals: {
     react: 'react',
