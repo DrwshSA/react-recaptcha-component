@@ -7,17 +7,17 @@ const ExampleRecaptcha = () => {
   const [token, setToken] = useState<string | null>(null);
 
   const handleTokenChange = (newToken: string | null) => {
-    console.log('Token:', newToken);
+    alert(`handleTokenChange: ${newToken?.toString()}`);
     setToken(newToken);
   };
 
   const handleExpired = () => {
-    console.log('Recaptcha expired');
+    alert(`handleExpired`);
     setToken(null);
   };
 
   const handleError = () => {
-    console.error('Error rendering recaptcha');
+    alert(`Error rendering recaptcha`);
     setToken(null);
   };
 
@@ -25,7 +25,7 @@ const ExampleRecaptcha = () => {
     <div>
       <Recaptcha
         sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-        type="checkbox"
+        type="invisible"
         size="normal"
         badge="bottomright"
         version="v2"
@@ -44,7 +44,6 @@ const ExampleRecaptcha = () => {
 
 function renderApp() {
   const container = document.getElementById('root');
-  console.log('container type', container)
     if (container && container.nodeType === Node.ELEMENT_NODE) {
       const root = createRoot(container!);
       root.render(<ExampleRecaptcha />);
