@@ -70,7 +70,7 @@ describe('Recaptcha component', () => {
   describe('props', () => {
     const defaultProps: RecaptchaProps = {
         sitekey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
-        onChange: () => {},
+        onVerify: () => {},
         onError: () => {},
         onExpired: () => {},
       };
