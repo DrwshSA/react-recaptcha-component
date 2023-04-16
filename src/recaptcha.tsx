@@ -3,9 +3,9 @@ import { getRecaptchaApiUrl } from './utils';
 import makeAsyncScriptLoad from './make-async-script-loader';
 
 
-type RecaptchaType = 'image' | 'audio' | 'checkbox' | 'invisible';
-type RecaptchaSize = 'normal' | 'compact';
-type RecaptchaBadge = 'bottomright' | 'bottomleft' | 'inline' | 'none';
+export type RecaptchaType = 'image' | 'audio' | 'checkbox' | 'invisible';
+export type RecaptchaSize = 'normal' | 'compact';
+export type RecaptchaBadge = 'bottomright' | 'bottomleft' | 'inline' | 'none';
 export type RecaptchaVersion = 'v2' | 'v3';
 
 export interface RecaptchaProps {
@@ -15,7 +15,7 @@ export interface RecaptchaProps {
   badge?: RecaptchaBadge;
   version?: RecaptchaVersion;
   theme?: 'light' | 'dark';
-  onChange?: (token: string | null) => void;
+  onVerify?: (token: string | number | null) => void;
   onExpired?: () => void;
   onError?: () => void;
   hl?: string;
@@ -37,14 +37,13 @@ const Recaptcha = ({
   version = 'v2',
   theme = 'light',
   hl,
-  onChange = () => {},
+  onVerify = () => {},
   onExpired = () => {},
   onError = () => {},
-}: RecaptchaProps): JSX.Element => {
+}: RecaptchaProps) => {
     const [widgetId, setWidgetId] = React.useState<number | undefined>(undefined);
     const [scriptLoaded, setScriptLoaded] = React.useState(false);
-
-
+    const recaptchaRef = React.useRef(null);
 
   const renderRecaptcha = () => {
     if (window.grecaptcha && version === 'v2') {
@@ -53,29 +52,27 @@ const Recaptcha = ({
         sitekey,
         size,
         badge,
-        callback: onChange,
+        callback: onVerify,
         'expired-callback': onExpired,
         'error-callback': onError,
-        hl
+        hl,
+        'theme': theme
       };
-      if (type === 'invisible') {
+      if (type === 'invisible' && recaptchaRef.current) {
         widgetParams = {
           ...widgetParams,
-          size: 'invisible',
-          bind: 'submit'
+          size: 'invisible'
         };
       } else if (type === 'checkbox') {
         widgetParams = {
-          ...widgetParams,
-          'theme': theme,
+          ...widgetParams          
         };
       }
-      const widgetId = window.grecaptcha.render('recaptcha', widgetParams);
-
+      const widgetId = window.grecaptcha.render(type==='invisible'? recaptchaRef.current : 'recaptcha', widgetParams);
       setWidgetId(widgetId);
     } else if (window.grecaptcha &&  version === 'v3') {
       window.grecaptcha.ready(() => {
-        window.grecaptcha.execute(sitekey, { action: 'submit' }).then(onChange);
+        window.grecaptcha.execute(sitekey, { action: 'submit' }).then(onVerify);
       });
     }
   };
@@ -123,7 +120,7 @@ const Recaptcha = ({
     }
   }, [scriptLoaded, version]);
 
-  return (<div id="recaptcha" data-testid="recaptcha-container"></div>);
+  return (<div id="recaptcha" data-testid="recaptcha-container" ref={recaptchaRef}></div>);
 };
 
 export default Recaptcha;

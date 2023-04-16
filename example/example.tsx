@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Recaptcha from '../src/recaptcha';
 import { createRoot } from 'react-dom/client';
 
-
 const ExampleRecaptcha = () => {
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = React.useState<string | null | number>(null);
 
-  const handleTokenChange = (newToken: string | null) => {
-    alert(`handleTokenChange: ${newToken?.toString()}`);
+  const handleTokenChange = (newToken: string | number |null) => {
     setToken(newToken);
   };
 
@@ -25,16 +23,17 @@ const ExampleRecaptcha = () => {
     <div>
       <Recaptcha
         sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-        type="invisible"
+        type='checkbox'
         size="normal"
         badge="bottomright"
         version="v2"
         theme="light"
-        onChange={handleTokenChange}
+        onVerify={handleTokenChange}
         onExpired={handleExpired}
         onError={handleError}
       />
       <p>Token: {token}</p>
+      <button disabled={!token}>Submit</button>
     </div>
   );
 };
