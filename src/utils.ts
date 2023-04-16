@@ -6,7 +6,7 @@ export const getRecaptchaApiUrl = (version: RecaptchaVersion, sitekey: string, t
   if (version === 'v2') {
     return `${RECAPTCHA_BASE_URL}.js?render=explicit${theme ? `&theme=${theme}` : ''}`;
   }
-    return `${RECAPTCHA_BASE_URL}/js/${version}.js?render=${sitekey}&hl=en${theme ? `&theme=${theme}` : ''}`;
+    return `${RECAPTCHA_BASE_URL}.js?render=${sitekey}${theme ? `&theme=${theme}` : ''}`;
   
 };
 

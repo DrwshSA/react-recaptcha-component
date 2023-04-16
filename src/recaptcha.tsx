@@ -47,7 +47,6 @@ const Recaptcha = ({
 
   const renderRecaptcha = () => {
     if (window.grecaptcha && version === 'v2') {
-
       let widgetParams: any = {
         sitekey,
         size,
@@ -108,12 +107,7 @@ const Recaptcha = ({
     if (scriptLoaded) {
       window.grecaptcha.ready(() => {
         if (window.grecaptcha.render) {
-          if (version === 'v3') {
-            window.grecaptchaReady = renderRecaptcha;
-          }
-          else {
-            renderRecaptcha();
-          }
+          renderRecaptcha();
         }
       });
       
